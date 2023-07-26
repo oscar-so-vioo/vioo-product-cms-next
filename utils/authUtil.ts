@@ -1,5 +1,7 @@
+"use client"
 import {ACCESS_TOKEN, LANGUAGE, REFRESH_TOKEN} from "@constants/types";
 import {SEARCH, UPLOAD} from "@constants/values";
+import {getSession} from "next-auth/react";
 
 export type LanguageType = string;
 export type TokenType = string | null;
@@ -69,13 +71,17 @@ export const getTokens = (): Tokens => {
     }
 }
 
-export const getAccessTokenAuthorization = (): string => {
-    const token: Tokens = getTokens()
-    return `Bearer ${token.accessToken}`
+export const getAccessTokenAuthorization = async (): Promise<string> => {
+
+    const s = await getSession()
+
+    return `Bearer ${s?.user.token.accessToken}`
 }
-export const getRefreshTokenAuthorization = (): string => {
-    const token: Tokens = getTokens()
-    return `Bearer ${token.accessToken}`
+export const getRefreshTokenAuthorization = async (): Promise<string> => {
+
+    const s = await getSession()
+
+    return `Bearer ${s?.user.token.refreshToken}`
 }
 export const getBearerToken = (t: string): string => {
     return `Bearer ${t}`

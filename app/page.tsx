@@ -1,4 +1,13 @@
-export default function Page() {
-    return <h1>Hello, Next.js!</h1>
-}
+"use client"
+import {postRefresh} from "@app/api/auth/postRefresh";
+import {useEffect} from "react";
+import {useSession} from "next-auth/react";
 
+export default function Page(){
+
+    return (
+        <>
+            <h1>Home</h1>
+        </>
+    )
+}

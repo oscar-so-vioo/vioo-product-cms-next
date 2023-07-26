@@ -12,11 +12,5 @@ export declare global {
         type Session = {
             user: User
         } & Omit<NextSession, 'user'>
-
-        type Element = {
-
-            auth
-
-        }
     }
 }

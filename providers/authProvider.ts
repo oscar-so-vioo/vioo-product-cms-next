@@ -4,7 +4,6 @@ import Credentials from "next-auth/providers/credentials";
 import {getRecord} from "@app/api/admin/getRecord";
 import {JWTPayload, UserInfo} from "@types/index";
 import jwtDecode from "jwt-decode";
-import {storeTokens} from "@utils/authUtil";
 import {User} from "next-auth/core/types";
 
 export const AuthProvider = Credentials({
@@ -23,11 +22,6 @@ export const AuthProvider = Credentials({
             if (response.data.access_token) {
 
                 const payload: JWTPayload = jwtDecode(response.data.access_token)
-
-                storeTokens({
-                    accessToken: response.data.access_token,
-                    refreshToken: response.data.refresh_token
-                })
 
                 const res = await getRecord({id: payload.userId}, response.data.access_token)
 

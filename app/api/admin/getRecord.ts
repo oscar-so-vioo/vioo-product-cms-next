@@ -8,15 +8,21 @@ import env from "@configs/envConfig";
 import {buildHeaders} from "@utils/headerUtil";
 import {getAccessTokenAuthorization, getBearerToken} from "@utils/authUtil";
 
-export function getRecord(query: AdminGetRecordDtoReq, token?: string): Promise<ResponseEntity<AdminGetRecordDtoRes>> {
+export async function getRecord(query: AdminGetRecordDtoReq, token?: string): Promise<ResponseEntity<AdminGetRecordDtoRes>> {
 
-    return apiClient.get(
+    if (typeof window == "undefined" && !token) {
+
+        throw new Error("Token is not provided")
+
+    }
+
+    return await apiClient.get(
         env.apiHost + '/api/admin/cms/record',
         {
             params: query,
             headers: buildHeaders({
-                'Authorization': token? getBearerToken(token): getAccessTokenAuthorization()
+                'Authorization': token ? getBearerToken(token!) : await getAccessTokenAuthorization()
             })
         }
-    )
+    ) as ResponseEntity<AdminGetRecordDtoRes>
 }

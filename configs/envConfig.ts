@@ -5,7 +5,8 @@ const env = {
     imageHost: process.env.NEXT_PUBLIC_IMAGE_HOST,
     imagePath: process.env.NEXT_PUBLIC_IMAGE_PATH,
     imageBaseURL: process.env.NEXT_PUBLIC_IMAGE_HOST + process.env.NEXT_PUBLIC_IMAGE_PATH,
-    perPage: parseInt(process.env.NEXT_PUBLIC_PER_PAGE)
+    perPage: parseInt(process.env.NEXT_PUBLIC_PER_PAGE),
+    tokenRefreshInterval: parseInt(process.env.NEXT_PUBLIC_TOKEN_REFRESH_INTERVAL),
 }
 
 export default env

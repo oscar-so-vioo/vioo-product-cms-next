@@ -1,7 +1,7 @@
-"use client"
-
 import { NextAuthOptions } from "next-auth"
 import {AuthProvider} from "../providers/authProvider";
+import env from "@configs/envConfig";
+import {postRefresh} from "@app/api/auth/postRefresh";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -23,7 +23,15 @@ export const authOptions: NextAuthOptions = {
 
       return session
     },
-    async jwt({ token, user, session, account }) {
+    async jwt({ token, user, session, account, trigger }) {
+
+      if(trigger === "update"){
+
+        const res = await postRefresh({refresh_token: token.user.token.refreshToken!})
+
+        token.user.token.refreshToken = res.data.refresh_token
+        token.user.token.accessToken = res.data.access_token
+      }
 
       if(user){
 

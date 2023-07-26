@@ -5,15 +5,15 @@ import {buildHeaders} from "@utils/headerUtil";
 import {getAccessTokenAuthorization} from "@utils/authUtil";
 import {AdminPutRecordDtoReq, AdminPutRecordDtoRes} from "@types/api/admin";
 
-export function putRecord(body: AdminPutRecordDtoReq): Promise<ResponseEntity<AdminPutRecordDtoRes>> {
+export async function putRecord(body: AdminPutRecordDtoReq): Promise<ResponseEntity<AdminPutRecordDtoRes>> {
 
-    return apiClient.put(
+    return await apiClient.put(
         env.apiHost + '/api/admin/cms/record',
         body,
         {
             headers: buildHeaders({
-                'Authorization': getAccessTokenAuthorization()
+                'Authorization': await getAccessTokenAuthorization()
             })
         }
-    )
+    ) as ResponseEntity<AdminPutRecordDtoRes>
 }
