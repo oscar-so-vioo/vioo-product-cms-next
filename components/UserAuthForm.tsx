@@ -1,6 +1,5 @@
 "use client"
 import * as React from "react"
-import { useSearchParams } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { signIn} from "next-auth/react"
 import { useForm, Controller } from "react-hook-form"
@@ -8,7 +7,7 @@ import * as z from "zod"
 
 import { userAuthSchema } from "@lib/validations/auth"
 import {SignInResponse} from "next-auth/src/react/types";
-import {Button, TextField} from "@mui/material";
+import {Button} from "@mui/material";
 
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}

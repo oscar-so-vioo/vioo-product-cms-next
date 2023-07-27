@@ -2,7 +2,7 @@
 import { Metadata } from "next"
 import Link from "next/link"
 
-import { UserAuthForm } from "@components/user-auth-form"
+import { UserAuthForm } from "@components/UserAuthForm"
 
 export const metadata: Metadata = {
   title: "Login",

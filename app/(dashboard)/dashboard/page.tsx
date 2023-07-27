@@ -4,9 +4,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import Navigator from './Navigator';
-import Content from './Content';
-import Header from './Header';
+import Navigator from '../Navigator';
+import Header from '../Header';
 
 let theme = createTheme({
     palette: {
@@ -153,12 +152,9 @@ theme = {
 
 const drawerWidth = 256;
 
-export default function Paperbase({children}) {
-
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+export default function Page() {
 
     const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
-
 
     return (
         <ThemeProvider theme={theme}>
@@ -168,19 +164,11 @@ export default function Paperbase({children}) {
                     component="nav"
                     sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
                 >
-                    {isSmUp ? null : (
-                        <Navigator
-                            PaperProps={{ style: { width: drawerWidth } }}
-                            variant="temporary"
-                            open={mobileOpen}
-                        />
-                    )}
                     <Navigator
                         PaperProps={{ style: { width: drawerWidth } }}
                         sx={{ display: { sm: 'block', xs: 'none' } }}
                     />
                 </Box>
-
 
                 <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <Header />

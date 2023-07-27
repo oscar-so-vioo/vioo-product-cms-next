@@ -4,7 +4,8 @@ import {Inter} from 'next/font/google'
 import RootStore, {initializeStore} from "@stores/rootStore";
 import {NextAuthProvider, StoreProvider} from "@app/providers";
 import {Provider} from "mobx-react";
-import RefreshToken from "@components/refresh-token";
+import RefreshToken from "@components/RefreshToken";
+import ThemeProvider from "../theme";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -21,12 +22,14 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <StoreProvider>
-                    <NextAuthProvider>
-                        <RefreshToken/>
-                        {children}
-                    </NextAuthProvider>
-                </StoreProvider>
+                <ThemeProvider>
+                    <StoreProvider>
+                        <NextAuthProvider>
+                            <RefreshToken/>
+                            {children}
+                        </NextAuthProvider>
+                    </StoreProvider>
+                </ThemeProvider>
             </body>
         </html>
     )
