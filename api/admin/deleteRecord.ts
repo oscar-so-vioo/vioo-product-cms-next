@@ -1,9 +1,16 @@
-import {AdminDeleteRecordDtoReq, AdminDeleteRecordDtoRes, AdminGetRecordDtoRes} from "@types/api/admin";
 import apiClient from "@lib/apiClient";
 import env from "@configs/envConfig";
 import {buildHeaders} from "@utils/headerUtil";
 import {getAccessTokenAuthorization} from "@utils/authUtil";
 import {ResponseEntity} from "@types/index";
+export type AdminDeleteRecordDtoReq = {
+    id: string
+}
+
+export type AdminDeleteRecordDtoRes = {
+}
+
+
 
 export async function deleteRecord(query: AdminDeleteRecordDtoReq): Promise<ResponseEntity<AdminDeleteRecordDtoRes>> {
 

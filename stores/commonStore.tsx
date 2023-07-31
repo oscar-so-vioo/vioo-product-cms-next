@@ -1,4 +1,4 @@
-import {fetchData} from "@app/api/common";
+import {fetchData} from "@api/common";
 
 export type ICommonInfo = {
   isShowDrawer?: boolean,

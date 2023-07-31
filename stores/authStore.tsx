@@ -1,11 +1,10 @@
-import {AuthPostCmsLoginDtoReq} from "@types/api/auth";
 import RootStore from "@stores/rootStore";
 import {action, makeObservable} from "mobx";
-import {postCmsLogin} from "@app/api/auth/postCmsLogin";
 import jwtDecode from "jwt-decode";
-import {getRecord} from "@app/api/admin/getRecord";
+import {getRecord} from "@app/../api/admin/getRecord";
 import {getTokens, storeTokens} from "@utils/authUtil";
 import {JWTPayload} from "@types/index";
+import {AuthPostCmsLoginDtoReq, postCmsLogin} from "@api/auth/postCmsLogin";
 
 export interface IAuthStore {
 

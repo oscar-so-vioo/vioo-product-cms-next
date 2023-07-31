@@ -1,6 +1,7 @@
 import {TokenType, UserRole} from "@constants/enum";
 import RootStore from "@stores/rootStore";
 import {NextRouter} from "next/router";
+import React from "react";
 
 export type User = {
   id: number
@@ -37,3 +38,5 @@ export type InjectedProps = {
   rootStore?: RootStore;
   router?: NextRouter;
 }
+
+export type StateSetter<T> = React.Dispatch<React.SetStateAction<T>>

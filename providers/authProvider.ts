@@ -1,10 +1,9 @@
-import {postCmsLogin} from "@app/api/auth/postCmsLogin";
-import {AuthPostCmsLoginDtoReq} from "@types/api/auth";
 import Credentials from "next-auth/providers/credentials";
-import {getRecord} from "@app/api/admin/getRecord";
 import {JWTPayload, UserInfo} from "@types/index";
 import jwtDecode from "jwt-decode";
 import {User} from "next-auth/core/types";
+import {getRecord} from "@api/admin/getRecord";
+import {AuthPostCmsLoginDtoReq, postCmsLogin} from "@api/auth/postCmsLogin";
 
 export const AuthProvider = Credentials({
     id: "auth-provider",

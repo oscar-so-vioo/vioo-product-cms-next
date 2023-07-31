@@ -1,7 +1,7 @@
 import { NextAuthOptions } from "next-auth"
 import {AuthProvider} from "../providers/authProvider";
 import env from "@configs/envConfig";
-import {postRefresh} from "@app/api/auth/postRefresh";
+import {postRefresh} from "@app/../api/auth/postRefresh";
 
 export const authOptions: NextAuthOptions = {
   session: {

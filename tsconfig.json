@@ -54,6 +54,9 @@
       ],
       "@utils/*": [
         "./utils/*"
+      ],
+      "@api/*": [
+        "./api/*"
       ]
     },
     "strictNullChecks": true

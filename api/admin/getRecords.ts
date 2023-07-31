@@ -1,6 +1,5 @@
 import {
-    AdminPostRecordDtoReq,
-    AdminPostRecordDtoRes
+     AdminInfo
 } from "@types/api/admin";
 import {ResponseEntity} from "@types/index";
 import apiClient from "@lib/apiClient";
@@ -8,16 +7,23 @@ import env from "@configs/envConfig";
 import {buildHeaders} from "@utils/headerUtil";
 import {getAccessTokenAuthorization} from "@utils/authUtil";
 
-export async function postRecord(body: AdminPostRecordDtoReq): Promise<ResponseEntity<AdminPostRecordDtoRes>> {
+export type AdminGetRecordsDtoReq = {
+}
+
+export type AdminGetRecordsDtoRes = {
+    records: AdminInfo[]
+}
 
 
-    return await apiClient.post(
-        env.apiHost + '/api/admin/cms/record',
-        body,
+export async function getRecords(query: AdminGetRecordsDtoReq): Promise<ResponseEntity<AdminGetRecordsDtoRes>> {
+
+    return await apiClient.get(
+        env.apiHost + '/api/admin/cms/records',
         {
+            params: query,
             headers: buildHeaders({
                 'Authorization': await getAccessTokenAuthorization()
             })
         }
-    ) as ResponseEntity<AdminPostRecordDtoRes>
+    ) as ResponseEntity<AdminGetRecordsDtoRes>
 }

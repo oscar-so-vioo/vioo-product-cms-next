@@ -3,7 +3,18 @@ import apiClient from "@lib/apiClient";
 import env from "@configs/envConfig";
 import {buildHeaders} from "@utils/headerUtil";
 import {getAccessTokenAuthorization} from "@utils/authUtil";
-import {AdminPutRecordDtoReq, AdminPutRecordDtoRes} from "@types/api/admin";
+export type AdminPutRecordDtoReq = {
+
+    id: string
+    email: string
+    username: string
+    password: string
+}
+
+
+export type AdminPutRecordDtoRes = {
+
+}
 
 export async function putRecord(body: AdminPutRecordDtoReq): Promise<ResponseEntity<AdminPutRecordDtoRes>> {
 
